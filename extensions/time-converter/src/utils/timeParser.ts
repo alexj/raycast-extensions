@@ -58,7 +58,13 @@ export function parseTimeInput(input: string): ParseResult {
       endDate = addDays(endDate, 1);
     }
 
-    return { date: startDate, endDate, includesDate, includesYear, isRange: true };
+    return {
+      date: startDate,
+      endDate,
+      includesDate,
+      includesYear,
+      isRange: true,
+    };
   }
 
   // Try splitting on explicit separators (covers "1pm - 3pm" which chrono
@@ -117,7 +123,12 @@ function parseSingleTime(
 
   switch (lowered) {
     case "now":
-      return { date: now, includesDate: true, includesYear: false, isRange: false };
+      return {
+        date: now,
+        includesDate: true,
+        includesYear: false,
+        isRange: false,
+      };
     case "noon":
       return {
         date: set(now, { hours: 12, minutes: 0, seconds: 0, milliseconds: 0 }),
@@ -165,14 +176,24 @@ function parseSingleTimeWithReference(
   switch (lowered) {
     case "noon":
       return {
-        date: set(reference, { hours: 12, minutes: 0, seconds: 0, milliseconds: 0 }),
+        date: set(reference, {
+          hours: 12,
+          minutes: 0,
+          seconds: 0,
+          milliseconds: 0,
+        }),
         includesDate: false,
         includesYear: false,
         isRange: false,
       };
     case "midnight":
       return {
-        date: set(reference, { hours: 0, minutes: 0, seconds: 0, milliseconds: 0 }),
+        date: set(reference, {
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+          milliseconds: 0,
+        }),
         includesDate: false,
         includesYear: false,
         isRange: false,

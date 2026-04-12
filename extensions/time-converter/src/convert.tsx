@@ -82,7 +82,7 @@ export default function Command() {
               const dateFormat = parsed.includesYear
                 ? DATE_TIME_FORMAT_WITH_YEAR
                 : DATE_TIME_FORMAT;
-            const formattedTime = parsed.includesDate
+              const formattedTime = parsed.includesDate
                 ? formatInTimeZone(parsed.date, tz, dateFormat)
                 : formatInTimeZone(parsed.date, tz, TIME_FORMAT);
 
@@ -280,12 +280,14 @@ export default function Command() {
  */
 function formatLocationName(location: string): string {
   const trimmed = location.trim();
-  if (trimmed.length <= 4 && trimmed === trimmed.toUpperCase() && !/\s/.test(trimmed)) {
+  if (
+    trimmed.length <= 4 &&
+    trimmed === trimmed.toUpperCase() &&
+    !/\s/.test(trimmed)
+  ) {
     return trimmed;
   }
-  return trimmed
-    .toLowerCase()
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  return trimmed.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 /**
