@@ -168,3 +168,4 @@ compiled_raycast_swift
 /package-lock.json
 /pnpm-lock.yaml
 /yarn.lock
+.nova/Configuration.json
